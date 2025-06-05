@@ -19,8 +19,8 @@ function handleSubmit(event) {
   const delayValue = +delay.value;
   const stateValue = state.value;
 
-  console.log('delayValue', delayValue);
-  console.log('stateValue', stateValue);
+  // console.log('delayValue', delayValue);
+  // console.log('stateValue', stateValue);
 
   setTimeout(() => {
     new Promise((resolve, reject) => {
@@ -49,6 +49,3 @@ function handleSubmit(event) {
   }, delayValue);
 }
 
-
-// .then(data => console.log(`✅ Fulfilled promise in ${delayValue}ms`)
-// .catch(error => console.log(`❌ Rejected promise in ${delayValue}ms`));
