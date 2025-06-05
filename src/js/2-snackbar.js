@@ -1,16 +1,12 @@
 'use strict';
 
-// Бібліотека flatpickr
-// Описаний в документації
-import flatpickr from 'flatpickr';
-// Додатковий імпорт стилів
-import 'flatpickr/dist/flatpickr.min.css';
-
 // Бібліотека iziToast
 // Описаний у документації
-import iziToast from 'izitoast';
+import iziToast from "izitoast";
 // Додатковий імпорт стилів
-import 'izitoast/dist/css/iziToast.min.css';
+import "izitoast/dist/css/iziToast.min.css";
+
+
 
 const form = document.querySelector('.form');
 
@@ -29,12 +25,30 @@ function handleSubmit(event) {
   setTimeout(() => {
     new Promise((resolve, reject) => {
       if (stateValue === 'fulfilled') {
-        resolve('OK-fulfilled');
+        resolve(delayValue);
       } else {
-        reject('NO-rejected');
+        reject(delayValue);
       }
     })
-      .then(data => console.log(data))
-      .catch(error => console.log(error));
+       .then(delay => {
+      console.log(`✅ Fulfilled promise in ${delay}ms`);
+      iziToast.success({
+        title: '✅',
+        message: `Fulfilled promise in ${delay}ms`,
+        position: 'topRight',
+      });
+    }).catch(delay => {
+      console.log(`❌ Rejected promise in ${delay}ms`);
+      iziToast.error({
+        title: '❌',
+        message: `Rejected promise in ${delay}ms`,
+        position: 'topRight',
+      }) })
+
+      
   }, delayValue);
 }
+
+
+// .then(data => console.log(`✅ Fulfilled promise in ${delayValue}ms`)
+// .catch(error => console.log(`❌ Rejected promise in ${delayValue}ms`));
