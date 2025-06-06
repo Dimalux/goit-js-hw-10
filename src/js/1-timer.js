@@ -33,15 +33,17 @@ const options = {
   minuteIncrement: 1,                // Крок зміни хвилин — 1
   onClose(selectedDates) {           // Колбек при закритті календаря
     const selected = selectedDates[0];  // Вивід вибраної дати в консоль
+    
+    
     if (selected <= new Date()) {
-      
-      iziToast.error({
-  title: 'Error',
-  message: 'Please choose a date in the future',
-  position: 'topRight',
-});
-
-      return;      
+    button.disabled = true;          // блокуємо кнопку Start
+    iziToast.error({
+      title: 'Error',
+      message: 'Please choose a date in the future',
+      position: 'topRight',
+    });
+    return;   
+         
      
     } else {
       userSelectedDate = selected;
