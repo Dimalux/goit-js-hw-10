@@ -34,7 +34,13 @@ const options = {
   onClose(selectedDates) {           // Колбек при закритті календаря
     const selected = selectedDates[0];  // Вивід вибраної дати в консоль
     if (selected <= new Date()) {
-      window.alert("Please choose a date in the future");
+      
+      iziToast.error({
+  title: 'Error',
+  message: 'Please choose a date in the future',
+  position: 'topRight',
+});
+
       return;      
      
     } else {
